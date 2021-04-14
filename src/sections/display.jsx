@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import VideoCard from '../components/video-card';
+import Item from '../components/item';
 
 const DisplayVideo = () => {
   const [videos, setVideos] = useState([]);
@@ -17,7 +17,7 @@ const DisplayVideo = () => {
 
   const cards = videos
     .map(({ title, url, description }) => (
-      <VideoCard
+      <Item
         title={title}
         url={url}
         description={description}

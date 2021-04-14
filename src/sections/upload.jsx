@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ProgressBar } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 const UploadSection = () => {
@@ -8,6 +8,7 @@ const UploadSection = () => {
   const [fileDescription, setFileDescription] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState();
+  const [progress, setProgress] = useState();
   const history = useHistory();
 
   const uploadService = async () => {
@@ -17,7 +18,16 @@ const UploadSection = () => {
     fromData.append('title', fileTitle);
     fromData.append('description', fileDescription);
 
-    return axios.post(`${process.env.REACT_APP_API_BASE_URL}videos/single`, fromData);
+    return axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}videos/single`,
+      fromData,
+      {
+        onUploadProgress: (data) => {
+          // Set the progress value to show the progress bar
+          setProgress(Math.round((100 * data.loaded) / data.total));
+        },
+      },
+    );
   };
 
   return (
@@ -78,6 +88,7 @@ const UploadSection = () => {
           onChange={(e) => { setFile(e.target.files[0]); }}
         />
       </Form.Group>
+      {progress && <ProgressBar now={progress} label={`${progress}%`} />}
       <Button variant="primary" disabled={isLoading} type="submit">
         {isLoading ? 'uploading ...' : 'Submit'}
       </Button>
