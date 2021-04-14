@@ -15,11 +15,11 @@ function App() {
       <Container fluid>
         <Switch>
           <Route path="/upload"><UploadSection /></Route>
-          <Route path="/home">
-            <DisplayVideo />
-          </Route>
           <Route path="/video/:name">
             <VideoPlayer />
+          </Route>
+          <Route path="/">
+            <DisplayVideo />
           </Route>
         </Switch>
       </Container>
