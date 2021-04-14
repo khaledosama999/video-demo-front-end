@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  Container,
+} from 'react-bootstrap';
+import { Route, Switch } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import NavBar from './components/nav';
+import DisplayVideo from './sections/display';
+import UploadSection from './sections/upload';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <Container fluid>
+        <Switch>
+          <Route path="/upload"><UploadSection /></Route>
+          <Route path="/home">
+            <DisplayVideo />
+          </Route>
+          <Route path="/video">
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                controls
+                url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                width="100%"
+                height="100%"
+              />
+            </div>
+          </Route>
+        </Switch>
+      </Container>
+    </>
   );
 }
 
