@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 const UploadSection = () => {
   const [fileTitle, setFileTitle] = useState('');
   const [fileDescription, setFileDescription] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState();
 
   const uploadService = async () => {
@@ -22,12 +23,16 @@ const UploadSection = () => {
       style={{ margin: '2vh' }}
       onSubmit={(e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         uploadService()
           .then(() => {
             setFileTitle('');
             setFileDescription('');
             setFile(undefined);
+          })
+          .finally(() => {
+            setIsLoading(false);
           });
       }}
     >
@@ -70,8 +75,8 @@ const UploadSection = () => {
           onChange={(e) => { setFile(e.target.files[0]); }}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
+      <Button variant="primary" disabled={isLoading} type="submit">
+        {isLoading ? 'uploading ...' : 'Submit'}
       </Button>
     </Form>
   );
