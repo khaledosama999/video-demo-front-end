@@ -8,10 +8,14 @@ html {
 }
 
 body {
-    margin: 2vh;
     width: 100%;
     height: 100vh;
     position: relative;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 .player-wrapper {
