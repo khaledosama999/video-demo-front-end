@@ -25,7 +25,7 @@ const DisplayVideo = () => {
     ));
 
   return (
-    <ul>
+    <ul className="list-group list-group-numbered">
       {cards}
     </ul>
   );

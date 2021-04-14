@@ -88,7 +88,7 @@ const UploadSection = () => {
           onChange={(e) => { setFile(e.target.files[0]); }}
         />
       </Form.Group>
-      {progress && <ProgressBar now={progress} label={`${progress}%`} />}
+      {progress && <ProgressBar now={progress} label={`${progress}%`} style={{ marginTop: '2px', marginBottom: '2px' }} />}
       <Button variant="primary" disabled={isLoading} type="submit">
         {isLoading ? 'uploading ...' : 'Submit'}
       </Button>

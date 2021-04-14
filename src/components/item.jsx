@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VideoCard = ({
   title = 'This is a video',
+  description,
   url,
 }) => {
   const strSplit = encodeURI(url).split('/');
@@ -11,13 +12,19 @@ const VideoCard = ({
 
   return (
     <Link to={`/video/${videoName}`}>
-      <li>{title}</li>
+      <li className="list-group-item d-flex justify-content-between align-items-start">
+        <div className="ms-2 me-auto">
+          <div className="fw-bold">{title}</div>
+          {description}
+        </div>
+      </li>
     </Link>
   );
 };
 
 VideoCard.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
 
