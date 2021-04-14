@@ -8,7 +8,8 @@ const VideoCard = ({
   description = 'Some quick example text to build on the card title and make up the bulk of the cards content.',
   url,
 }) => {
-  const encodedUrl = encodeURI(url);
+  const strSplit = encodeURI(url).split('/');
+  const videoName = strSplit[strSplit.length - 1];
 
   return (
     <Card style={{ maxWidth: '25rem' }}>
@@ -18,7 +19,7 @@ const VideoCard = ({
         <Card.Text className="video_card_body_description">
           {description}
         </Card.Text>
-        <Link to={`/video/${encodedUrl}`}>
+        <Link to={`/video/${videoName}`}>
           <Button className="video_card_body_btn" variant="info">Play</Button>
         </Link>
       </Card.Body>

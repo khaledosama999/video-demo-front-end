@@ -18,7 +18,7 @@ function App() {
           <Route path="/home">
             <DisplayVideo />
           </Route>
-          <Route path="/video/:url">
+          <Route path="/video/:name">
             <VideoPlayer />
           </Route>
         </Switch>
