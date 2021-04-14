@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { CardColumns } from 'react-bootstrap';
 import VideoCard from '../components/video-card';
 
 const DisplayVideo = () => {
@@ -26,9 +25,9 @@ const DisplayVideo = () => {
     ));
 
   return (
-    <CardColumns style={{ marginTop: '2rem' }}>
+    <ul>
       {cards}
-    </CardColumns>
+    </ul>
   );
 };
 

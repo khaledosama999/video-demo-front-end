@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 const UploadSection = () => {
   const [fileTitle, setFileTitle] = useState('');
   const [fileDescription, setFileDescription] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState();
+  const history = useHistory();
 
   const uploadService = async () => {
     const fromData = new FormData();
@@ -33,6 +35,7 @@ const UploadSection = () => {
           })
           .finally(() => {
             setIsLoading(false);
+            history.push('/');
           });
       }}
     >
