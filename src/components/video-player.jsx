@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 const VideoPlayer = () => {
   const { name } = useParams();
-  console.log({ name });
+
   const baseUrl = 'https://storage.googleapis.com/upload-videos-test/';
 
   return (

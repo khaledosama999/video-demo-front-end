@@ -9,7 +9,7 @@ const DisplayVideo = () => {
   const getVideosService = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}videos?limit=1000`);
 
-    setVideos(response.data.videos);
+    setVideos(response.data.videos || []);
   };
 
   useEffect(() => {
