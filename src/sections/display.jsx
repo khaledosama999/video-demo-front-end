@@ -16,18 +16,17 @@ const DisplayVideo = () => {
   }, []);
 
   const cards = videos
-    .map(({ title, url, description }) => (
+    .map(({ title, url }, index) => (
       <Item
-        title={title}
+        title={`${index + 1}. ${title}`}
         url={url}
-        description={description}
       />
     ));
 
   return (
-    <ul className="list-group list-group-numbered">
+    <ol className="list-group list-group-numbered" style={{ marginTop: '10px' }}>
       {cards}
-    </ul>
+    </ol>
   );
 };
 
